@@ -1,17 +1,24 @@
-module tb_two_gates;
+module tb_logic_gates;
 
 reg A, B;
-wire AND_OUT, OR_OUT;
+wire AND_OUT, OR_OUT, NOT_A;
+wire NAND_OUT, NOR_OUT, XOR_OUT, XNOR_OUT;
 
-two_gates uut (
+logic_gates uut (
     .A(A),
     .B(B),
     .AND_OUT(AND_OUT),
-    .OR_OUT(OR_OUT)
+    .OR_OUT(OR_OUT),
+    .NOT_A(NOT_A),
+    .NAND_OUT(NAND_OUT),
+    .NOR_OUT(NOR_OUT),
+    .XOR_OUT(XOR_OUT),
+    .XNOR_OUT(XNOR_OUT)
 );
 
 initial begin
-    $monitor("A=%b B=%b AND=%b OR=%b", A, B, AND_OUT, OR_OUT);
+    $monitor("A=%b B=%b AND=%b OR=%b NOT_A=%b NAND=%b NOR=%b XOR=%b XNOR=%b",
+             A,B,AND_OUT,OR_OUT,NOT_A,NAND_OUT,NOR_OUT,XOR_OUT,XNOR_OUT);
 
     A=0; B=0; #10;
     A=0; B=1; #10;
